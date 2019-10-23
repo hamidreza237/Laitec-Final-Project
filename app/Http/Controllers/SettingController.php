@@ -12,13 +12,13 @@ class SettingController extends Controller
     {
         $index=Setting::paginate(3);
 
-        return view('admin.slider.index',compact('index'));
+        return view('admin.setting.index',compact('index'));
     }
 
 
     public function create()
     {
-        return view('admin.slider.create');
+        return view('admin.setting.create');
     }
 
 

@@ -41,7 +41,7 @@
                     <a class="nav-link text-white" href="#">contact us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/">show website</a>
+                    <a class="nav-link text-white" href="/" target="_blank">show website</a>
                 </li>
                 <li class="nav-item dropdown float-right">
 
