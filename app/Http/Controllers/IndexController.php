@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class IndexController extends Controller
 {
     public function index()
-    {   $test='1';
-        return view('website.index',compact('test'));
+    {
+        $setting = Setting::all();
+        return view('website.index', compact('setting'));
     }
 }
