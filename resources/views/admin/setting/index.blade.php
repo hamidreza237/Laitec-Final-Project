@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('content')
-
+    @if (session('delete'))
+        <section class="alert-danger col-4 offset-4">
+            <h5 class="text-center">{{session('delete')}}</h5>
+        </section>
+    @endif
     <section class="container-fluid">
         <section class="row">
             <section class="col-6 offset-3">
@@ -24,7 +28,7 @@
                             <td>{{$item->Author}}</td>
                             <td>{{str_limit($item->Keywords,10)}}</td>
                             <td>
-                                <form action="" method="get">
+                                <form action="{{route('setting.show',$item->id)}}" method="get">
                                     @csrf
                                     <input type="submit" class="btn btn-success" value="details">
                                 </form>
@@ -39,9 +43,9 @@
                         </tr>
                     @endforeach
 
-                        <tr>
-                            <td colspan="7">{{$index->links()}}</td>
-                        </tr>
+                    <tr>
+                        <td colspan="7">{{$index->links()}}</td>
+                    </tr>
 
                 </table>
             </section>

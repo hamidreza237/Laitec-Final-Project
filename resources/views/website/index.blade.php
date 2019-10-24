@@ -1,3 +1,4 @@
+{{dd($test)}}
 @include('website.partials._header')
 <!--main website-->
 <main class="container-fluid pr-0 pl-0">

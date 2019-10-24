@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SettingValidation;
 use App\Setting;
 use Illuminate\Http\Request;
 
@@ -10,9 +11,9 @@ class SettingController extends Controller
 
     public function index()
     {
-        $index=Setting::paginate(3);
+        $index = Setting::paginate(3);
 
-        return view('admin.setting.index',compact('index'));
+        return view('admin.setting.index', compact('index'));
     }
 
 
@@ -22,7 +23,7 @@ class SettingController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(SettingValidation $request)
     {
         $store = new Setting();
         $store->Title = $request->title;
@@ -30,13 +31,15 @@ class SettingController extends Controller
         $store->Author = $request->author;
         $store->Keywords = $request->key;
         $store->save();
+        session()->flash('save', 'successfully saved!');
         return redirect()->route('setting.create');
     }
 
 
-    public function show(Setting $setting)
+    public function show($setting)
     {
-        //
+        $show=Setting::findOrFail($setting);
+        return view('admin.setting.showDetails',compact('show'));
     }
 
 
@@ -54,8 +57,9 @@ class SettingController extends Controller
 
     public function destroy($setting)
     {
-       Setting::destroy($setting);
-       return redirect()->route('setting.index');
+        Setting::destroy($setting);
+        session()->flash('delete','the selected row deleted!');
+        return redirect()->route('setting.index');
     }
 
 }

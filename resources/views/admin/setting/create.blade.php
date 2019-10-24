@@ -1,12 +1,24 @@
 @extends('layouts.app')
 @section('content')
+    @if (session('save'))
+        <section class="alert-success col-4 offset-4">
+            <h5 class="text-center">{{session('save')}}</h5>
+        </section>
+    @endif
+    @if ($errors->any())
+        <section class="col-4 offset-4 border-10 rounded text-justify text-light font-weight-bold bg-danger">
+            @foreach($errors->all() as $item)
+                <h5>{{$item}}</h5>
+            @endforeach
+        </section>
+    @endif
     <section class="container-fluid">
         <section class="row">
             <section class="col-6 offset-3">
                 <form action="{{route('setting.store')}}" method="post">
                     @csrf
                     <section class="form-group">
-                        <label for="title" >Title:</label>
+                        <label for="title">Title:</label>
                         <input type="text" class="form-control" id="title" name="title">
                     </section>
                     <section class="form-group">
