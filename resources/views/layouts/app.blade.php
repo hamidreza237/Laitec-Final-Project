@@ -29,7 +29,7 @@
                     <a class="nav-link text-white" href="{{route('setting.create')}}">setting</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">slider</a>
+                    <a class="nav-link text-white" href="{{route('slider.create')}}">slider</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="#">about us</a>

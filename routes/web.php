@@ -21,4 +21,6 @@ Auth::routes();
 Route::middleware(['auth'])->prefix('AdminPage')->group(function () {
     Route::get('/MainPage', 'HomeController@index')->name('main');
     Route::resource('/setting','SettingController');
+    Route::resource('/slider','SliderController');
+    Route::resource('/about','AboutController');
 });

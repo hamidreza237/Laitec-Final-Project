@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $setting = Setting::all();
-        return view('website.index', compact('setting'));
+
+        return view('website.index');
     }
 }
