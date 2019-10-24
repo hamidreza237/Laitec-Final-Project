@@ -32,13 +32,13 @@
                     <a class="nav-link text-white" href="{{route('slider.create')}}">slider</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">about us</a>
+                    <a class="nav-link text-white" href="{{route('about.create')}}">about us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">gallery</a>
+                    <a class="nav-link text-white" href="{{route('gallery.create')}}">gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="#">contact us</a>
+                    <a class="nav-link text-white" href="{{route('contact.index')}}">contact us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{url('/')}}" target="_blank">show website</a>

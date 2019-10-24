@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
-    <meta name="keywords" content=""/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
+    <title>{{$setting->Title}}</title>
+    <meta name="keywords" content="{{$setting->Title}}"/>
+    <meta name="description" content="{{$setting->Description}}"/>
+    <meta name="author" content="{{$setting->Author}}"/>
     <meta name="robots" content="index,follow"/>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{'custom.css'}}">

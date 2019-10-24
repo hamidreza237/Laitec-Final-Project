@@ -15,25 +15,17 @@
     <section class="container-fluid">
         <section class="row">
             <section class="col-6 offset-3">
-                <form action="{{route('about.store')}}" method="post">
+                <form action="{{route('gallery.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <section class="form-group">
-                        <label for="cont">Content:</label>
-                        <textarea id="cont" name="cont" style="resize: none; height: 150px" class="form-control"></textarea>
-                    </section>
-                    <section class="form-group">
-                        <label for="font">Font Size:</label>
-                        <input type="number" class="form-control" id="font" name="font" min="10" max="32" value="10">
-                    </section>
-                    <section class="form-group">
-                        <label for="color">Color:</label>
-                        <input type="color" class="form-control" id="color" name="color" value="#000" >
+                        <label for="image">Image:</label>
+                        <input type="file" class="form-control" id="image" name="image">
                     </section>
                     <section class="form-group">
                         <input type="submit" class="form-control btn btn-success btn-block" value="submit">
                     </section>
                 </form>
-                <form action="{{route('about.index')}}" method="get">
+                <form action="{{route('gallery.index')}}" method="get">
                     @csrf
                     <section class="form-group">
                         <input type="submit" class="form-control btn btn-info btn-block" value="show all">

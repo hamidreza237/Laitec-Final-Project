@@ -11,16 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('website.index');
-});
+Route::get('/','IndexController@index');
+
 
 Auth::routes();
 
 
 Route::middleware(['auth'])->prefix('AdminPage')->group(function () {
     Route::get('/MainPage', 'HomeController@index')->name('main');
-    Route::resource('/setting','SettingController');
-    Route::resource('/slider','SliderController');
-    Route::resource('/about','AboutController');
+    Route::resource('/setting', 'SettingController');
+    Route::resource('/slider', 'SliderController');
+    Route::resource('/about', 'AboutController');
+    Route::resource('/gallery', 'GalleryController');
+    Route::resource('/contact', 'ContactController');
 });
+Route::post('/InsertContact', 'ContactController@store')->name('insert.contact');
+

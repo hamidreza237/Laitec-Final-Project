@@ -5,7 +5,8 @@
             <section class="borderContact mb-5"></section>
             <section class="row ml-0 mr-0">
                 <section class="col-8 offset-2">
-                    <form action="" method="post">
+                    <form action="{{route('insert.contact')}}" method="post">
+                        @csrf
                         <section class="form-group">
                             <label for="fullname">fullname</label>
                             <input type="text" name="fullname" placeholder="please enter fullName?"
@@ -24,6 +25,11 @@
                         <section class="form-group">
                             <input type="submit" value="submit" class="btn btn-success btn-block">
                         </section>
+                        @if (session('save'))
+                            <section class="alert-success col-4 offset-4">
+                                <h5 class="text-center">{{session('save')}}</h5>
+                            </section>
+                        @endif
                     </form>
                 </section>
             </section>

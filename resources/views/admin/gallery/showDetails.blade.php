@@ -3,11 +3,11 @@
     <section class="container-fluid">
         <section class="row">
             <section class="col-6 offset-3">
-                <section class="card">
-                    <section class="card-body">{{$show->Content}}</section>
+                <section class="card" style="width:800px">
+                    <img class="card-img-top" src="{{asset('Images/gallery/'.$show->Image)}}">
                 </section>
                 <section>
-                    <a href="{{route('about.index')}}"><-----</a>
+                    <a href="{{route('gallery.index')}}"><-----</a>
                 </section>
             </section>
         </section>

@@ -17,10 +17,8 @@
                     <thead>
                     <tr>
                         <th>id</th>
-                        <th>Content</th>
-                        <th>Font Size</th>
-                        <th>Color</th>
-                        <th>details</th>
+                        <th>Image</th>
+                        <th>Full Size</th>
                         <th>edit</th>
                         <th>delete</th>
                     </tr>
@@ -28,23 +26,21 @@
                     @foreach($index as $item)
                         <tr>
                             <td>{{$item->id}}</td>
-                            <td>{{str_limit($item->Content,10)}}</td>
-                            <td>{{$item->FontSize}}</td>
-                            <td><section style="width: 25px;height: 25px;background-color: {{$item->Color}}"></section></td>
+                            <td><img src="{{asset('Images/gallery/'.$item->Image)}}" style="width: 50px"></td>
                             <td>
-                                <form action="{{route('about.show',$item->id)}}" method="get">
+                                <form action="{{route('gallery.show',$item->id)}}" method="get">
                                     @csrf
-                                    <input type="submit" class="btn btn-success" value="details">
+                                    <input type="submit" class="btn btn-success" value="Full Size">
                                 </form>
                             </td>
                             <td>
-                                <form action="{{route('about.edit',$item->id)}}" method="get">
+                                <form action="{{route('gallery.edit',$item->id)}}" method="get">
                                     @csrf
                                     <input type="submit" class="btn btn-warning" value="edit">
                                 </form>
                             </td>
                             <td>
-                                <form action="{{route('about.destroy',$item->id)}}" method="post">
+                                <form action="{{route('gallery.destroy',$item->id)}}" method="post">
                                     @csrf
                                     @method('delete')
                                     <input type="submit" class="btn btn-danger" value="delete">

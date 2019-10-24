@@ -3,83 +3,67 @@
 namespace App\Http\Controllers;
 
 use App\About;
+use App\Http\Requests\AboutValidation;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        $index=About::paginate();
+        return view('admin.about.index',compact('index'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('admin.about.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(AboutValidation $request)
     {
-        //
+        $store=new About();
+        $store->Content=$request->cont;
+        $store->FontSize=$request->font;
+        $store->Color=$request->color;
+        $store->save();
+        session()->flash('save', 'successfully saved!');
+        return redirect()->route('about.create');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\About  $about
-     * @return \Illuminate\Http\Response
-     */
-    public function show(About $about)
+
+    public function show($about)
     {
-        //
+        $show=About::findOrFail($about);
+        return view('admin.about.showDetails',compact('show'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\About  $about
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(About $about)
+
+    public function edit($about)
     {
-        //
+        $edit = About::findOrFail($about);
+        return view('admin.about.edit', compact('edit'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\About  $about
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, About $about)
+
+    public function update(Request $request,$about)
     {
-        //
+        $update = About::findOrFail($about);
+        $update->Content = $request->cont;
+        $update->FontSize = $request->font;
+        $update->Color = $request->color;
+        $update->save();
+        session()->flash('edit', 'the selected row successfully updated!');
+        return redirect()->route('about.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\About  $about
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(About $about)
+
+    public function destroy($about)
     {
-        //
+        About::destroy($about);
+        session()->flash('delete', 'the selected row deleted!');
+        return redirect()->route('about.index');
     }
 }
